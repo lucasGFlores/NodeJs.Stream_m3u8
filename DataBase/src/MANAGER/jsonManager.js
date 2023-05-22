@@ -1,4 +1,4 @@
-//O trabalho desse arquivo é organizar o Json e a conexão  
+//O trabalho desse arquivo é organizar o Json e o diretório  
 const { Console } = require("console")
 const { json } = require("express/lib/response")
 const fs = require("fs")
@@ -15,11 +15,11 @@ const fs = require("fs")
     const updateJson = async({titulo,caminho}) =>{
         const json =  require('../videos.json')
         json.video.forEach(obj => {
-            console.log(`${obj.titulo}      ${titulo}`)
             if(obj.titulo === titulo){
                 obj.caminho = caminho
             }
         })
+      
         fs.writeFileSync("./src/videos.json",JSON.stringify(json))
     }
 module.exports= {writeJs,updateJson}
