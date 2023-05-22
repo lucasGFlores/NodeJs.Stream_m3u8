@@ -1,0 +1,35 @@
+{
+  "video": [
+    {
+      "titulo": "sexoGay",
+      "downloadURL": "https://m3u8s.highwinds-cdn.com/api/v9/m3u8s/k72dlAsslkrctb841xyvym0gg3ZAd940tkf39wgg87ft3qzn3ycq3.m3u8",
+      "caminho": "./src/videos/sexoGay.mp4"
+    },
+    {
+      "titulo": "isekai-kita-no-de-special-skill-2",
+      "downloadURL": "https://m3u8s.highwinds-cdn.com/api/v9/m3u8s/rc0nszr3nqqmmbjs938kcz8bbqZq4k8sw195xn5xfAbwp03fmddm1.m3u8",
+      "caminho": "./src/videos/isekai-kita-no-de-special-skill-2.mp4"
+    },
+    {
+      "titulo": "isekai-kita-no-de-special-skill-1",
+      "downloadURL": "https://m3u8s.highwinds-cdn.com/api/v9/m3u8s/vj8xjpA6fA0w6pn4dpn1gk2191Zlt7A1Aq4c35gAsckthwwhcr4by.m3u8",
+      "imagemURL": "https://akidoo.top/images/covers/isekai-kita-no-de-special-skill-1-cv1.png",
+      "id": 3056,
+      "caminho": "./src/videos/isekai-kita-no-de-special-skill-1.mp4"
+    },
+    {
+      "titulo": "mako-chan-kaihatsu-nikki-3",
+      "downloadURL": "https://m3u8s.highwinds-cdn.com/api/v9/m3u8s/6k9zxA1ltkkl824p2njphbb2nyZ07t8bvmyxrvbv43tAAc1y359by.m3u8",
+      "imagemURL": "https://akidoo.top/images/covers/mako-chan-kaihatsu-nikki-3-cv1.png",
+      "id": 3054,
+      "caminho": "./src/videos/mako-chan-kaihatsu-nikki-3.mp4"
+    },
+    {
+      "titulo": "mako-chan-kaihatsu-nikki-4",
+      "downloadURL": "https://m3u8s.highwinds-cdn.com/api/v9/m3u8s/lscyclccpbyc9ln1f7z9rsfjlyZhAh44ndvkmqdwdk1545w2rn69A.m3u8",
+      "imagemURL": "https://akidoo.top/images/covers/mako-chan-kaihatsu-nikki-4-cv1.png",
+      "id": 3055,
+      "caminho": "./src/videos/mako-chan-kaihatsu-nikki-4.mp4"
+    }
+  ]
+}

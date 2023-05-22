@@ -1,0 +1,3 @@
+const base = ({titulo,downloadURL}) =>{
+    
+}
