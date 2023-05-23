@@ -35,20 +35,15 @@ const download = async () => {
     });
   });
 };
+
 const getInfoRecent = (blackList = ["rape"]) => {
   const json = require("../videos.json");
   const jsonRecent = require("../recent.json");
   const results = jsonRecent.results.filter((obj) =>
     json.video.reduce((accumulator, currentValue) => {
       if (accumulator) {
-        return (
-          obj.slug !== currentValue.titulo &&
-          obj.tags.reduce((accumulator, currentValue) => {
-            if (accumulator) {
-              return blackList.includes(currentValue);
-            }
-          }, true)
-        );
+        console.log(obj.tags.some((tag) => {if(blackList.includes(tag)){return false}}))
+      // return obj.slug !== currentValue.titulo && obj.tags.some((tag) => {if(blackList.includes(tag)){return false}})
       }
     }, true)
   );

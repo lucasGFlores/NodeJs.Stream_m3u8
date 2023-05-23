@@ -21,7 +21,7 @@ app.use(cors());
 
 app.use(express.json());
 app.get("/noticias/:sexo", (req, res) => {
-  // getInfoRecent()
+  getInfoRecent()
   // download()
   res.json([
     {
