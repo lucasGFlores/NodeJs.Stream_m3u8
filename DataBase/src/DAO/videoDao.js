@@ -39,14 +39,13 @@ const download = async () => {
 const getInfoRecent = (blackList = ["rape"]) => {
   const json = require("../videos.json");
   const jsonRecent = require("../recent.json");
-  const results = jsonRecent.results.filter((obj) =>
-    json.video.reduce((accumulator, currentValue) => {
-      if (accumulator) {
-        console.log(obj.tags.some((tag) => {if(blackList.includes(tag)){return false}}))
-      // return obj.slug !== currentValue.titulo && obj.tags.some((tag) => {if(blackList.includes(tag)){return false}})
-      }
-    }, true)
-  );
+    const results = jsonRecent.results.filter((obj) => { 
+      return json.video.some((video) => {
+        //se o nome do video não existir no json video e não tiver nenhuma tag da blacklist irá passar 
+       !( obj.slug === video.titulo) && !(obj.tags.some((tag) => blackList.includes(tag)))  
+      })
+    })
+
   results.forEach(async (info) => {
     const { slug, cover_url: imagemURL, id } = info;
     const jsonGetVideo = await fetch(
