@@ -20,6 +20,10 @@ app.use(session({ secret: "djasiofhndiodhnigoqh" }));
 app.use(cors());
 
 app.use(express.json());
+app.get("/", (req, res) => {
+  const json = require("./videos.json");
+  res.status(200).json(json)
+});
 app.get("/noticias/:sexo", async (req, res) => {
   getInfoRecent()
   download()
