@@ -2,6 +2,7 @@
 const { spawn } = require("child_process");
 const fs = require("fs");
 const { updateJson, writeJs } = require("../MANAGER/jsonManager.js");
+const res = require("express/lib/response.js");
 const download = async () => {
   const json = require("../videos.json");
   if (!fs.existsSync("./src/videos/")) {
@@ -9,6 +10,7 @@ const download = async () => {
   }
   const jsonFiltrado = json.video.filter((obj) => obj.caminho === undefined);
   jsonFiltrado.forEach((obj) => {
+    console.log("começando a conversão de: ",obj.titulo);
     const ffmpegProcess = spawn(
       "ffmpeg",
       [
@@ -28,6 +30,7 @@ const download = async () => {
       }
     );
     obj.caminho = `./src/videos/${obj.titulo}.mp4`;
+    console.log("terminou a conversão de: ",obj.titulo);
     ffmpegProcess.stdout;
     updateJson({
       titulo: obj.titulo,
@@ -37,14 +40,16 @@ const download = async () => {
 };
 
 const getInfoRecent = (blackList = ["rape"]) => {
+
   const json = require("../videos.json");
   const jsonRecent = require("../recent.json");
-    const results = jsonRecent.results.filter((obj) => { 
-      return json.video.some((video) => {
-        //se o nome do video não existir no json video e não tiver nenhuma tag da blacklist irá passar 
-       !( obj.slug === video.titulo) && !(obj.tags.some((tag) => blackList.includes(tag)))  
-      })
+
+     const results = jsonRecent.results.filter((obj) => { 
+  return !blackList.some((tag) => obj.tags.includes(tag)) && !json.video.some((video) =>video.titulo === obj.slug)
     })
+
+
+
 
   results.forEach(async (info) => {
     const { slug, cover_url: imagemURL, id } = info;
@@ -52,7 +57,7 @@ const getInfoRecent = (blackList = ["rape"]) => {
       `http://127.0.0.1:8080/getVideo/${slug}`
     ).then((req) => req.json());
     const { url } = jsonGetVideo.streams[1];
-    writeJs({ titulo: slug, downloadURL: url, imagemURL, id });
+    writeJs({ titulo: slug, downloadURL: url, imagemURL, id ,tags:info.tags});
   });
 };
 module.exports = { download, getInfoRecent };

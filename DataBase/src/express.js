@@ -20,9 +20,9 @@ app.use(session({ secret: "djasiofhndiodhnigoqh" }));
 app.use(cors());
 
 app.use(express.json());
-app.get("/noticias/:sexo", (req, res) => {
+app.get("/noticias/:sexo", async (req, res) => {
   getInfoRecent()
-  // download()
+  download()
   res.json([
     {
       titulo: "uma noticias mutcho cu",

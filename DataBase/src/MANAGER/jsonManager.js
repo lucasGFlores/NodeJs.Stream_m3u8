@@ -12,6 +12,7 @@ const fs = require("fs")
         jsonAnti.video.push(json)
         fs.writeFileSync("./src/videos.json",JSON.stringify(jsonAnti))
     }
+    
     const updateJson = async({titulo,caminho}) =>{
         const json =  require('../videos.json')
         json.video.forEach(obj => {
