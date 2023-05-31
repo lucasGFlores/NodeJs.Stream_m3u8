@@ -24,9 +24,11 @@ app.get("/", (req, res) => {
   const json = require("./videos.json");
   res.status(200).json(json)
 });
+
+
 app.get("/noticias/:sexo", async (req, res) => {
   getInfoRecent()
-  download()
+ 
   res.json([
     {
       titulo: "uma noticias mutcho cu",
