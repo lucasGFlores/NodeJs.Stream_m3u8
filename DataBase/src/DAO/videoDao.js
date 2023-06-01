@@ -44,24 +44,27 @@ const getInfoRecent = (blackList = ["rape"], whiteList = [""]) => {
   const jsonRecent = require("../recent.json");
 
   const results = jsonRecent.results.filter((obj) => {
-
     const whiteListStatus = whiteList.includes("")
       ? true
       : whiteList.some((tag) => obj.tags.includes(tag)) ?? "deu undefined";
+
+    const blackListStatus = blackList.includes("")
+      ? true
+      : blackList.some((tag) => obj.tags.includes(tag)) ?? "deu undefined";
     return (
-      !blackList.some((tag) => obj.tags.includes(tag)) &&
       !json.video.some((video) => video.titulo === obj.slug) &&
+      !blackListStatus &&
       whiteListStatus
     );
   });
 
-  // results.forEach(async (info) => {
-  //   const { slug, cover_url: imagemURL, id } = info;
-  //   const jsonGetVideo = await fetch(
-  //     `http://127.0.0.1:8080/getVideo/${slug}`
-  //   ).then((req) => req.json());
-  //   const { url } = jsonGetVideo.streams[1];
-  //   writeJs({ titulo: slug, downloadURL: url, imagemURL, id ,tags:info.tags});
-  // });
+  results.forEach(async (info) => {
+    const { slug, cover_url: imagemURL, id } = info;
+    const jsonGetVideo = await fetch(
+      `http://127.0.0.1:8080/getVideo/${slug}`
+    ).then((req) => req.json());
+    const { url } = jsonGetVideo.streams[1];
+    writeJs({ titulo: slug, downloadURL: url, imagemURL, id, tags: info.tags });
+  });
 };
 module.exports = { download, getInfoRecent };
