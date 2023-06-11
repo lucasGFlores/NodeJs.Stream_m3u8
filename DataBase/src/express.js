@@ -2,17 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
 const app = express();
-const { error } = require("console");
-const TaskModel = require("../models/task.model");
-const { createReadStream, fsync } = require("fs");
-const { request } = require("http");
-const { spawn } = require("child_process");
 const fs = require("fs");
-const ffmpeg = require("ffmpeg.js");
-const { type } = require("express/lib/response");
-const { writeJs } = require("./MANAGER/jsonManager.js");
-// const {writeJs,updateJson} = require("./MANAGER/fileManager.js")
 const { download, getInfoRecent } = require("./DAO/videoDao");
+const JsonManager = require("./MANAGER/jsonManager");
 const port = 5000;
 
 app.use(session({ secret: "djasiofhndiodhnigoqh" }));
@@ -21,8 +13,10 @@ app.use(cors());
 
 app.use(express.json());
 app.get("/", (req, res) => {
-  const json = require("./videos.json");
-  res.status(200).json(json)
+ JsonManager.getInstance().filerDuplicateJson();
+JsonManager.getInstance().writeJs({titulo: "teste", downloadURL: "teste", tags: ["teste"]});
+const json = require("./videos.json")
+res.status(200).json(JsonManager.getInstance().json);
 });
 
 
