@@ -30,14 +30,7 @@ app.get("/noticias/:sexo", async (req, res) => {
     {
       titulo: "indianos foram encontrados no porão de uma e-girl",
     },
-    {
-      titulo:
-        "um grupo neo nazista foi preso.'O QUE TEM DE ERRADO EM MATAR JUDEU!!???' diz bola um dos integrantes",
-    },
-    {
-      titulo:
-        "Aluno do Senai realiza um atentado terrorista nos USA e China anunciando 'ESSES MERDAS QUE ME OBRIGAM A LIGAR MEU VENTILADOR NO 3'",
-    },
+
   ]);
 });
 
